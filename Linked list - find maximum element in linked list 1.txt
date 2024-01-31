@@ -40,35 +40,43 @@ Sample Output 1
 
 10
 class Node:
-    def __init__(self,x):
-        self.data=x
-        self.next=None
+    def __init__(self, x):
+        self.data = x
+        self.next = None
+
 class LinkedList:
     def __init__(self):
-        self.head=self.tail=None
-    def create(self,x):
-        n=Node(x)
-        if self.head==None:
-            self.head=self.tail=n
+        self.head = self.tail = None
+
+    def create(self, x):
+        n = Node(x)
+        if self.head is None:
+            self.head = self.tail = n
         else:
-            self.tail.next=n
-            self.tail=n
-    def show(self,n):
-        temp=self.head
+            self.tail.next = n
+            self.tail = n
+
+    def find_maximum(self):
+        if self.head is None:
+            print("List is empty")
+            return None
+
+        max_number = self.head.data
+        temp = self.head.next
+
         while temp:
-            if temp.data==n:
-                print(n,"is present in the list")
-                return
-            else:
-                temp=temp.next
-        if temp==None:
-            print(n,"not present in the list")
-l1=LinkedList()
+            if temp.data > max_number:
+                max_number = temp.data
+            temp = temp.next
+
+        return max_number
+l1 = LinkedList()
 while True:
-    x=int(input())
-    if x==-1:
-        n=int(input())
+    x = int(input())
+    if x == -1:
         break
     else:
         l1.create(x)
-l1.show(n)
+max_number = l1.find_maximum()
+if max_number is not None:
+    print(max_number)
