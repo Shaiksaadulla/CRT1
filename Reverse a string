@@ -1,0 +1,6 @@
+n = input("")
+n = list(n)  
+n.reverse()
+
+for x in n:
+    print(x,end="")
