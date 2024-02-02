@@ -1,0 +1,55 @@
+class Node:
+    def __init__(self, x):
+        self.data = x
+        self.left = None
+        self.right = None
+
+    def insert(self, x):
+        if self.data is None:
+            self.data = x
+            return
+        if x < self.data:
+            if self.left is None:
+                self.left = Node(x)
+            else:
+                self.left.insert(x)
+        else:
+            if self.right is None:
+                self.right = Node(x)
+            else:
+                self.right.insert(x)
+    def preorder(self):
+        print(self.data,end=" ")
+        if self.left:
+            self.left.preorder()
+        if self.right:
+            self.right.preorder()
+    def inorder(self):
+        if self.left:
+            self.left.inorder()
+        print(self.data,end=" ")
+        if self.right:
+            self.right.inorder()
+    def postorder(self):
+        if self.left:
+            self.left.postorder()
+        if self.right:
+            self.right.postorder()
+        print(self.data,end=" ")
+root = Node(40)
+while True:
+    print()
+    print("1.Insert\n2.preorder\n3.inorder\n4.postorder")
+    ch = int(input("Enter your choice: "))
+    if ch == 1:
+        x = int(input("Enter an element: "))
+        root.insert(x)
+    elif ch == 2:
+        root.preorder()
+    elif ch == 3:
+        sno = int(input("Enter the element to search: "))
+        root.inorder()
+    elif ch == 4:
+        root.postorder()
+    else:
+        print("Invalid choice")
